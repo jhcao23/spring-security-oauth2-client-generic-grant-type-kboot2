@@ -22,8 +22,12 @@ import org.springframework.util.MultiValueMap
 class GenericClientCredentialsAccessTokenProvider : OAuth2AccessTokenSupport, AccessTokenProvider {
 
     private var paramNameClientCredentials = "client_credentials"
-    @get:Override
-    protected val httpMethod = HttpMethod.POST
+//    @get:Override
+    private var httpMethod = HttpMethod.POST
+
+    override protected fun getHttpMethod(): HttpMethod {
+        return this.httpMethod
+    }
 
     constructor(paramNameClientCredentials: String) {
         this.paramNameClientCredentials = paramNameClientCredentials
@@ -34,22 +38,22 @@ class GenericClientCredentialsAccessTokenProvider : OAuth2AccessTokenSupport, Ac
         this.httpMethod = httpMethod
     }
 
-    fun supportsResource(resource: OAuth2ProtectedResourceDetails): Boolean {
+    override fun supportsResource(resource: OAuth2ProtectedResourceDetails): Boolean {
         return resource is GenericClientCredentialsResourceDetails && paramNameClientCredentials.equals(resource.getGrantType())
     }
 
-    fun supportsRefresh(resource: OAuth2ProtectedResourceDetails): Boolean {
+    override fun supportsRefresh(resource: OAuth2ProtectedResourceDetails): Boolean {
         return false
     }
 
     @Throws(UserRedirectRequiredException::class)
-    fun refreshAccessToken(resource: OAuth2ProtectedResourceDetails,
+    override fun refreshAccessToken(resource: OAuth2ProtectedResourceDetails,
                            refreshToken: OAuth2RefreshToken, request: AccessTokenRequest): OAuth2AccessToken? {
         return null
     }
 
     @Throws(UserRedirectRequiredException::class, AccessDeniedException::class, OAuth2AccessDeniedException::class)
-    fun obtainAccessToken(details: OAuth2ProtectedResourceDetails, request: AccessTokenRequest): OAuth2AccessToken {
+    override fun obtainAccessToken(details: OAuth2ProtectedResourceDetails, request: AccessTokenRequest): OAuth2AccessToken {
         return retrieveToken(request, details, getParametersForTokenRequest(details), HttpHeaders())
     }
 

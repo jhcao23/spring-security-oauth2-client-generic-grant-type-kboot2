@@ -5,11 +5,11 @@ import org.springframework.security.oauth2.client.resource.BaseOAuth2ProtectedRe
 /**
  * Created by jhcao on 2017-03-27.
  */
-class GenericClientCredentialsResourceDetails(grantTypeName: String) : BaseOAuth2ProtectedResourceDetails() {
+open class GenericClientCredentialsResourceDetails(grantTypeName: String) : BaseOAuth2ProtectedResourceDetails() {
 
-    val isClientOnly: Boolean
-        @Override
-        get() = true
+    override fun isClientOnly(): Boolean {
+        return false
+    }
 
     init {
         setGrantType(grantTypeName)
