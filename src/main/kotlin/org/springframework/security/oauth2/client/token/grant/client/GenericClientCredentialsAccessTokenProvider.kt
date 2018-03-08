@@ -25,7 +25,7 @@ class GenericClientCredentialsAccessTokenProvider : OAuth2AccessTokenSupport, Ac
 //    @get:Override
     private var httpMethod = HttpMethod.POST
 
-    override protected fun getHttpMethod(): HttpMethod {
+    override fun getHttpMethod(): HttpMethod {
         return this.httpMethod
     }
 
