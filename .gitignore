@@ -1,0 +1,75 @@
+bin/
+target/
+dist/
+build/
+generate*
+.mvn/
+*.log
+*.log.*
+# compiled output
+/dist
+/tmp
+/out-tsc
+# dependencies
+node_modules
+# Ionic 3
+package-lock.json
+yarn.lock
+.yarnclean
+platforms
+hooks
+plugins
+www
+# IDEs and editors
+/.idea
+.sourcemaps/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+### Visual Studio Code ###
+.vscode/
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+yarn-error.log
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+*/.DS_Store
+**/.DS_Store
+*/**/.DS_Store
+Thumbs.db
